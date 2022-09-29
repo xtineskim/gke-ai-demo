@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-demo
+  template:
+    metadata:
+      labels:
+        app: app-demo
+    spec:
+      containers:
+      - name: svlete-app
+        # Replace  with your Artifact Registry location (e.g., us-west1).
+        # Replace  with your project ID.
+        image: us-east1-docker.pkg.dev/christineskim-pycon/app-demo/svlete-app:latest
+        # This app listens on port 8080 for web traffic by default.
+        ports:
+        - containerPort: 80
+        env:
+          - name: PORT
+            value: "80"
