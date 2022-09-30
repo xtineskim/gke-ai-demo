@@ -1,16 +1,3 @@
-# FROM node:18
-
-# WORKDIR /app
-# COPY package*.json ./
-
-# RUN npm install
-# COPY ./ ./
-
-# EXPOSE 8080
-
-# ENTRYPOINT ["npm", "run","dev"]
-
-
 FROM node:12 AS build
 
 WORKDIR /app
