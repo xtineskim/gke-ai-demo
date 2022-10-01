@@ -2,11 +2,12 @@ import streamlit as st
 import base64
 from google.cloud import aiplatform
 import pandas as pd
+import matplotlib.pyplot as plt
 
 endpoint = aiplatform.Endpoint("YOUR_ENDPOINT_HERE")
 
 # The car part
-
+labels = ["bumper", "hood","lateral","engine_compartment","windshield"]
 
 
 # Encode the image 
@@ -33,6 +34,14 @@ def run():
         # st.write(prediction)
         if st.button("Predict"):
             prediction = endpoint.predict(bytes_data)
+
+            fig1, ax1 = plt.subplots()
+
+            sizes = "PERCENTAGE OF THE JSON RETURNED FROM APP"
+            
+            ax1.pie(sizes, labels=labels, autopct='%1.1f%%', shadow=True, startangle=90)
+            ax1.axis('equal') 
+            st.pyplot(fig1)
 
 if __name__ == '__main__':
   run()
