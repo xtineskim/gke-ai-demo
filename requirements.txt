@@ -1,0 +1,6 @@
+streamlit==1.10.0
+google-cloud-aiplatform
+matplotlib
+python-dotenv
+Pillow
+seaborn
