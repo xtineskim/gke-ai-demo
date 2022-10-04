@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: starterproject
+  name: vertex-ai-app-demo
 spec:
   selector:
     matchLabels:
-      app: starterproject
+      app: vertex-ai-app-demo
   template:
     metadata:
       labels:
-        app: starterproject
+        app: vertex-ai-app-demo
     spec:
       volumes:
       - name: google-cloud-key
         secret:
           secretName: vertex-ai-key
       containers:
-      - name: starterproject
-        image:     us-central1-docker.pkg.dev/PROJECT_ID/app-demo/app:latest
+      - name: app-demo
+        image: us-central1-docker.pkg.dev/PROJECT_ID/app-demo/app:latest
         ports:
         - containerPort: 80
         volumeMounts:
