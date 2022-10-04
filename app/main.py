@@ -9,6 +9,7 @@ import os
 import seaborn as sns
 
 load_dotenv()
+aiplatform.init()
 
 def get_endpoint_id() -> str:
   """This function reads the endpoint ID from the .env file
