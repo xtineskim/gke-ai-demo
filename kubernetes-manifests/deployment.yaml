@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: starterproject
+spec:
+  selector:
+    matchLabels:
+      app: starterproject
+  template:
+    metadata:
+      labels:
+        app: starterproject
+    spec:
+      volumes:
+      - name: google-cloud-key
+        secret:
+          secretName: vertex-ai-key
+      containers:
+      - name: starterproject
+        image:     us-central1-docker.pkg.dev/PROJECT_ID/app-demo/app:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: google-cloud-key
+          mountPath: /var/secrets/google
+        env:
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /var/secrets/google/key.json
